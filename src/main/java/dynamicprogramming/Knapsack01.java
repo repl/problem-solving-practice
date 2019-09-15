@@ -46,11 +46,9 @@ class Knapsack01 {
     }
 
     public int recursiveDP(Item[] items, int index, int remainingweight, Map<Integer, Map<Integer, Integer>> cache) {
-
         if (index == items.length || items[index] == null) {
             return 0;
         }
-
         if (!cache.containsKey(index)) {
             cache.put(index, new HashMap<Integer, Integer>());
         }
@@ -61,13 +59,12 @@ class Knapsack01 {
 
         int toReturn = 0;
         if (items[index].weight > remainingweight) {
-            toReturn = naive(items, index + 1, remainingweight);
+            toReturn = recursiveDP(items, index + 1, remainingweight);
         } else {
-            toReturn = Math.max(naive(items, index + 1, remainingweight - items[index].weight) + items[index].value,
-                    naive(items, index + 1, remainingweight));
+            toReturn = Math.max(recursiveDP(items, index + 1, remainingweight - items[index].weight) + items[index].value,
+                    recursiveDP(items, index + 1, remainingweight));
         }
         cacheEntry.put(remainingweight, toReturn);
         return toReturn;
-
     }
 }
