@@ -16,6 +16,8 @@ public class SharingChocolateBar {
      * sweetness level 7, 7, 9, 9 respectively)
      */
     public static void main(String[] args) {
-        
+        int numBars = 7;
+        int[] sweetness = {1, 2, 4, 7, 3, 6, 9};
+
     }
 }

@@ -34,3 +34,4 @@ ensime-langserver.log
 .ensime_cache
 
 target/
+bin/

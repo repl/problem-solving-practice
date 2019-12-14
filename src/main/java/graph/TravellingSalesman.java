@@ -5,7 +5,6 @@ import edu.princeton.cs.algs4.EdgeWeightedGraph;
 import edu.princeton.cs.algs4.Graph;
 
 class TravellingSalesman {
-    
         public static void main(String[] args) {
                 EdgeWeightedGraph g = new EdgeWeightedGraph(4);
                 g.addEdge(new Edge(1, 2, 10.0));
@@ -15,6 +14,5 @@ class TravellingSalesman {
                 g.addEdge(new Edge(2, 4, 35.0));
                 g.addEdge(new Edge(3, 4, 30.0));
 
-                
          }
 }

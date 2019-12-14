@@ -18,8 +18,8 @@ public class Fibonacci {
 	}
 
 	void initialize() {
-                for (int i = 0; i < MAX; i++) {
-                        lookup[i] = NIL;
+        for (int i = 0; i < MAX; i++) {
+            lookup[i] = NIL;
 		}
 	}
 

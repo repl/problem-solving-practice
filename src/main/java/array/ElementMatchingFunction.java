@@ -2,7 +2,8 @@ package array;
 
 import java.util.*;
 
-/* Find index in a binary search array where value at the index is same as index.
+/* Find elements in an array which satisfied given function definition:
+   Function will return true for value x, if all numbers on left side of x are small and all number on  the right side of x are greater. 
 
 From: https://www.geeksforgeeks.org/google-interview-experience-for-sde-1/
 Example: [ 4, 3, 1, 5, 7, 6, 10]
@@ -11,7 +12,7 @@ Time Complexity: O(n)
 Space Complexity: O(n)
 */
 
-public class BinarySearchOutOfOrder {
+public class ElementMatchingFunction {
     public static void main(String[] args) {
 
         int[] input = {4, 3, 1, 5, 7, 6, 10};
