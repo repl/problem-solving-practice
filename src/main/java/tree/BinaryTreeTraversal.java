@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.AbstractMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Stack;
 import tree.bst.BSTUtils;
@@ -31,6 +32,9 @@ public class BinaryTreeTraversal {
         System.out.println("");
         System.out.print("Preorder No Rec: ");
         preorderNoRec(root);
+        System.out.println("");
+        System.out.print("Postorder: ");
+        postorder(root);
 
         System.out.println("");
         System.out.print("Morris Inorder: ");
@@ -42,7 +46,9 @@ public class BinaryTreeTraversal {
         System.out.println("");
         System.out.print("Level Order Itr: ");
         levelOrderItr(root);
-
+        System.out.println("");
+        System.out.print("Level Order using Queue: ");
+        levelOrderWithQueue(root);
     }
 
     private static void preorder(Node node) {
@@ -173,5 +179,20 @@ public class BinaryTreeTraversal {
                 queue.offer(new AbstractMap.SimpleEntry(n.right, level + 1));
          }
         System.out.println(result);
+    }
+
+    public static void levelOrderWithQueue(Node node) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            Node n = queue.poll();
+            System.out.print(n.data + " ");
+            if (n.left != null) {
+                queue.add(n.left);
+            }
+            if (n.right != null) {
+                queue.add(n.right);
+            }
+        }
     }
 }

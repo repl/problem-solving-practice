@@ -1,7 +1,5 @@
 package dynamicprogramming;
 
-import static java.lang.Math.min;
-
 public class SquareSubMatrix {
     /*
     Given a 2D boolean array, fnd the largest square subarray of
@@ -18,28 +16,56 @@ public class SquareSubMatrix {
                 {false, true, false, false},
                 {true,  true, true,  true},
                 {false, true, true,  false}};
-        System.out.println("Recursive: " + recursive(arr, 0, 0));
 
-        System.out.println("Recursive DP: " + recursiveDP());
+        System.out.println("Recursive: " + recursive(arr));
+
+        System.out.println("Recursive DP: " + recursiveDP(arr));
 
         System.out.println("Iterative DP: " + iterativeDP());
     }
 
-    private static int recursive(boolean[][] arr, int tx, int ty) {
-        if (tx >= arr.length - 1|| ty >= arr[0].length - 1) return 0;
-        int answer = 0;
-        if (arr[tx][ty]) {
-            int subMatrices = min(recursive(arr, tx + 1, ty),
-                    min(recursive(arr, tx + 1, ty + 1), recursive(arr, tx, ty + 1)));
-            if (subMatrices > 0) {
-                answer++;
+    private static int recursive(boolean arr[][]) {
+        int max = 0;
+        for (int i = 0;i<arr.length;i++) {
+            for (int j = 0;j<arr[0].length;j++){
+                if (arr[i][j]) {
+                    max = Math.max(max, recursive(arr, i, j));
+                }
             }
         }
-        return answer;
+        return max;
     }
 
-    private static int recursiveDP() {
-        return 0;
+    private static int recursive(boolean[][] arr, int tx, int ty) {
+        if (tx == arr.length || ty == arr[0].length) return 0;
+        if (!arr[tx][ty]) return 0;
+
+        return 1 + Math.min(recursive(arr, tx + 1, ty),
+                          Math.min(recursive(arr, tx + 1, ty + 1), recursive(arr, tx, ty + 1)));
+    }
+
+    private static int recursiveDP(boolean[][] arr) {
+        int[][] cache = new int[arr.length][arr[0].length];
+        int max = 0;
+        for (int i = 0; i < arr.length;i++) {
+            for (int j = 0;j< arr[0].length;j++) {
+                max = Math.max(max, recursiveDPI(arr, i, j, cache));
+            }
+        }
+        return max;
+    }
+
+    private static int recursiveDPI(boolean[][] arr, int x, int y, int[][] cache) {
+        if (x == arr.length || y == arr[0].length)
+            return 0;
+        if (!arr[x][y])
+            return 0;
+        int cacheVal = cache[x][y];
+        if (cacheVal > 0)
+            return cacheVal;
+        cache[x][y] = 1 + Math.min(recursiveDPI(arr, x + 1, y, cache),
+                                   Math.min(recursiveDPI(arr, x, y + 1, cache), recursiveDPI(arr, x + 1, y + 1, cache)));
+        return cache[x][y];
     }
 
     private static int iterativeDP() {

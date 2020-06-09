@@ -14,7 +14,7 @@ public class ContainerWithMostWater {
      */    
     public static void main(String[] args) {
         System.out.println(compute(new int[]{1,2,4,2,3,2,5,2}));
-        System.out.println(compute(new int[]{1,1,3,2,4,1,4,2,2,3}));                                   
+        System.out.println(compute(new int[]{1,1,3,2,4,1,4,2,2,3}));
     }
 
     public static int compute(int[] arr) {
@@ -26,9 +26,12 @@ public class ContainerWithMostWater {
         int right = arr.length - 1;
         while (left < right) {
             max = Math.max(max, (right - left) * Math.min(arr[left], arr[right]));
-            if (arr[left] <arr[right]) {
+            if (arr[left] < arr[right]) {
                 left++;
+            } else if (arr[left] > arr[right]) {
+                right--;
             } else {
+                left++;
                 right--;
             }
         }

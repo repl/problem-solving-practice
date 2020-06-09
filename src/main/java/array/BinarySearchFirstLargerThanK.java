@@ -3,6 +3,7 @@ package array;
 import java.util.*;
 
 public class BinarySearchFirstLargerThanK {
+    /* Find the first array value which is greater than the input key */
     public static void main(String[] args) {
         List<Integer> input = Arrays.asList(2, 3, 3, 3, 5, 8, 9, 12, 13, 14);
         System.out.println(bsearch(input, 3));

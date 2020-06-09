@@ -37,7 +37,7 @@ public class DeleteMiddleNode {
                 mid = mid.next;
                 temp = temp.next.next;
             } else {
-                if (temp.next != null) {
+                if (temp.next != null) { //temp is at an odd numbered node and next/final node is even, so no mid node in this list.
                     nodeBeforeMid = null;                    
                 }
                 temp = null;

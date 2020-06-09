@@ -5,7 +5,7 @@ import java.util.*;
 public class BSearch {
     public static void main(String[] args) {
         List<Integer> input = Arrays.asList(2, 3, 5, 8, 9, 12,13 ,14);
-        System.out.println(bsearch(input, 3));
+        System.out.println(bsearch(input, 3));        
     }
 
     public static int bsearch(List<Integer> list, int key) {
