@@ -66,18 +66,16 @@ public class MoneyChange {
     private static int iterativeDP(int[] coins, int[] cache, int amt) {
         cache[0] = 0;
         for (int coinAmt = 1; coinAmt <= amt; coinAmt++) {
-            if (cache[coinAmt] < 0) {
-                int minCoins = Integer.MAX_VALUE;
-                for (int coin: coins) {
-                    if (coinAmt - coin >= 0) {
-                        int currCoins = cache[coinAmt - coin] + 1;
-                        if (currCoins < minCoins) {
-                            minCoins = currCoins;
-                        }
+            int minCoins = Integer.MAX_VALUE;
+            for (int coin : coins) {
+                if (coinAmt - coin >= 0) {
+                    int currCoins = cache[coinAmt - coin] + 1;
+                    if (currCoins < minCoins) {
+                        minCoins = currCoins;
                     }
                 }
-                cache[coinAmt] = minCoins;
             }
+            cache[coinAmt] = minCoins;
         }
         return cache[amt];
     }

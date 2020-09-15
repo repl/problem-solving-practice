@@ -21,7 +21,7 @@ public class SquareSubMatrix {
 
         System.out.println("Recursive DP: " + recursiveDP(arr));
 
-        System.out.println("Iterative DP: " + iterativeDP());
+        System.out.println("Iterative DP: " + iterativeDP(arr));
     }
 
     private static int recursive(boolean arr[][]) {
@@ -68,7 +68,24 @@ public class SquareSubMatrix {
         return cache[x][y];
     }
 
-    private static int iterativeDP() {
-        return 0;
+    private static int iterativeDP(boolean arr[][]) {
+        int max = 0;
+        int[][] cache = new int[arr.length][arr[0].length];
+        for (int i=0;i<cache.length;i++) {
+            for (int j=0;j<cache[0].length;i++) {
+                // If we’re in the first row/column then
+                // the value is just 1 if that cell is
+                // true and 0 otherwise. In other rows and
+                // columns need to look up and to the left
+                if (i == 0 || j == 0) {
+                    cache[i][j] = arr[i][j] ? 1 : 0;
+                } else if (arr[i][j]) {
+                    cache[i][j] = Math.min(Math.min(cache[i][j - 1], cache[i - 1][j]), cache[i - 1][j - 1]) + 1;
+                }
+                if (cache[i][j] > max)
+                    max = cache[i][j];
+            }
+        }
+        return max;
     }
 }

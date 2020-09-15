@@ -14,6 +14,7 @@ public class AdvanceToEnd {
         return compute(input, input.size() - 1);
     }
 
+    //Recursive - inefficient, can use dynamic programming
     public static boolean compute(List<Integer> input, int endIndex) {
         if (endIndex == 0) {
             return true;
@@ -26,5 +27,14 @@ public class AdvanceToEnd {
             }
         }
         return false;
+    }
+
+    //Efficient
+    public static boolean computeItr(List<Integer> input) {
+        int furthestSoFar = 0, lastindex = input.size();
+        for (int i = 0; i < input.size() && i <= furthestSoFar; i++) {
+            furthestSoFar = Math.max(furthestSoFar, i + input.get(i));
+        }
+        return furthestSoFar >= lastindex;
     }
 }
