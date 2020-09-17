@@ -12,7 +12,7 @@ public class Dijkstra {
   public static void main(String[] args) {
     int nodes = 6, sourceNode = 0, targetNode = 5;
     MutableValueGraph<Integer, Integer> graph = ValueGraphBuilder.directed().build();
-    for (int i = 0; i <= nodes; i++) {
+    for (int i = 0; i < nodes; i++) {
       graph.addNode(i);
     }
     graph.putEdgeValue(0, 1, 4);
