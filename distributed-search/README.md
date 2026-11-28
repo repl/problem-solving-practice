@@ -7,7 +7,7 @@ fan-out, merge, and failover paths stay easy to inspect and test.
 
 ## Run and exercise
 
-Requires Java 17 or newer and Maven:
+Requires Java 25 (the latest LTS release) and Maven:
 
 ```shell
 mvn test

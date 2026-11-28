@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5</version>
+        <version>3.5.16</version>
         <relativePath/>
     </parent>
 
@@ -17,8 +17,8 @@
     <name>Distributed Search Interview Demo</name>
 
     <properties>
-        <java.version>21</java.version>
-        <scala.version>2.13.14</scala.version>
+        <java.version>25</java.version>
+        <scala.version>2.13.18</scala.version>
     </properties>
 
     <dependencies>
@@ -59,7 +59,7 @@
                 <configuration>
                     <scalaVersion>${scala.version}</scalaVersion>
                     <args>
-                        <arg>-release:21</arg>
+                        <arg>-release:25</arg>
                     </args>
                 </configuration>
             </plugin>
