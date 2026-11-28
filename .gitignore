@@ -32,6 +32,9 @@ HELP.md
 .ensime
 ensime-langserver.log
 .ensime_cache
+.bloop/
+.metals/
 
 target/
 bin/
+distributed-search/build/
